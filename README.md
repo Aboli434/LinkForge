@@ -13,17 +13,6 @@ This repository contains a React + Vite + Tailwind frontend demo for a freelance
 - Orders listing, Messaging UI, Admin panel placeholder, About/Contact/FAQ/Terms pages
 - Payment form (dummy — no real payment integration)
 
-📌 Project To-Do List
-✅ Dashboard
-✅ Messages (make box smaller, add chat list)
-✅ Terms of Use & Privacy Policy (separate pages)
-✅ Services (minimum 10 added)
-❌ Modal for service
-✅ Add Images
-❌ Ratings for freelancer
-❌ Blog page
-❌ Color scheme (consistent design)
-✅ About section modified
 
 ## Quick start
 ```bash
