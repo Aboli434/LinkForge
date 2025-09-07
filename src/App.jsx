@@ -20,6 +20,7 @@ import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import FAQ from './pages/FAQ.jsx'
 import Terms from './pages/Terms.jsx'
+import Privacy from "./pages/privacy";
 import NotFound from './pages/NotFound.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 
@@ -66,6 +67,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/terms" element={<Terms />} />
+           <Route path="/privacy" element={<Privacy />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
