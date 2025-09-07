@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { setAuth, saveUser } from '../data/mock'
+import { setAuth, saveUser } from '../data/test'
 import { useNavigate, Link } from 'react-router-dom'
 
 export default function Register() {

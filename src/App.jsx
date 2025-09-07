@@ -20,16 +20,20 @@ import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import FAQ from './pages/FAQ.jsx'
 import Terms from './pages/Terms.jsx'
-import Privacy from "./pages/privacy";
+import Privacy from "./pages/privacy"
 import NotFound from './pages/NotFound.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 export default function App() {
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Navbar always visible at the top */}
       <Navbar />
+
+      {/* Main content area */}
       <main className="flex-1">
         <Routes>
+          {/* Public Routes */}
           <Route path="/" element={<Landing />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/:id" element={<ServiceDetails />} />
@@ -39,40 +43,85 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
 
-          <Route path="/dashboard/client" element={
-            <ProtectedRoute role="client"><ClientDashboard /></ProtectedRoute>
-          } />
-          <Route path="/dashboard/freelancer" element={
-            <ProtectedRoute role="freelancer"><FreelancerDashboard /></ProtectedRoute>
-          } />
+          {/* Protected Client Dashboard */}
+          <Route
+            path="/dashboard/client"
+            element={
+              <ProtectedRoute role="client">
+                <ClientDashboard />
+              </ProtectedRoute>
+            }
+          />
 
-          <Route path="/profile" element={
-            <ProtectedRoute><Profile /></ProtectedRoute>
-          } />
-          <Route path="/post-project" element={
-            <ProtectedRoute role="client"><PostProject /></ProtectedRoute>
-          } />
-          <Route path="/orders" element={
-            <ProtectedRoute><Orders /></ProtectedRoute>
-          } />
-          <Route path="/messages" element={
-            <ProtectedRoute><Messages /></ProtectedRoute>
-          } />
+          {/* Protected Freelancer Dashboard */}
+          <Route
+            path="/dashboard/freelancer"
+            element={
+              <ProtectedRoute role="freelancer">
+                <FreelancerDashboard />
+              </ProtectedRoute>
+            }
+          />
 
-          <Route path="/admin" element={
-            <ProtectedRoute role="admin"><AdminPanel /></ProtectedRoute>
-          } />
+          {/* Protected Routes for authenticated users */}
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/post-project"
+            element={
+              <ProtectedRoute role="client">
+                <PostProject />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/orders"
+            element={
+              <ProtectedRoute>
+                <Orders />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/messages"
+            element={
+              <ProtectedRoute>
+                <Messages />
+              </ProtectedRoute>
+            }
+          />
 
+          {/* Admin Panel protected route */}
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute role="admin">
+                <AdminPanel />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Informational Pages */}
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/terms" element={<Terms />} />
-           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/privacy" element={<Privacy />} />
 
+          {/* 404 Not Found Page */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
+
+      {/* Footer always visible at the bottom */}
       <Footer />
     </div>
   )
 }
+

@@ -1,30 +1,69 @@
 import { useState, useEffect, useRef } from "react"
 
+/**
+ * Chat Component
+ *
+ * A simple chat UI component that:
+ * - Renders a message thread (list of messages).
+ * - Auto-scrolls to the bottom when new messages are added.
+ * - Allows the user to send messages.
+ *
+ * Props:
+ * @param {Object} thread - The chat thread object.
+ * @param {Array} thread.messages - Initial array of messages.
+ *   Each message object should have:
+ *   {
+ *     id: number | string,   // Unique identifier
+ *     from: string,          // Sender name ("You" or others)
+ *     text: string,          // Message content
+ *     time: string           // Formatted timestamp
+ *   }
+ *
+ * Behavior:
+ * - Resets messages when `thread` changes.
+ * - Scrolls to bottom automatically when messages update.
+ * - Allows typing a message in an input and sending it by pressing Enter or clicking "Send".
+ */
+
 export default function Chat({ thread }) {
+  // User's input text
   const [text, setText] = useState("")
+
+  // Messages state (initialized from thread)
   const [messages, setMessages] = useState(thread?.messages || [])
+
+  // Reference to the last message (used for auto-scroll)
   const messagesEndRef = useRef(null)
 
-  // Reset when thread changes
+  // Reset messages when the thread changes
   useEffect(() => {
     setMessages(thread?.messages || [])
   }, [thread])
 
-  // Auto-scroll to bottom when new messages arrive
+  // Auto-scroll to the bottom whenever messages update
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
 
+  /**
+   * Handles sending a new message
+   */
   function send(e) {
     e.preventDefault()
-    if (!text.trim()) return
+    if (!text.trim()) return // Prevent empty messages
+
+    // Construct a new message object
     const m = {
-      id: Date.now(),
-      from: "You",
+      id: Date.now(), // Unique ID (timestamp-based)
+      from: "You", // Sender (hardcoded as "You" for now)
       text,
       time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
     }
+
+    // Append new message to messages state
     setMessages((ms) => [...ms, m])
+
+    // Reset input field
     setText("")
   }
 
@@ -38,8 +77,8 @@ export default function Chat({ thread }) {
               className={
                 "inline-block px-4 py-2 rounded-2xl max-w-xs md:max-w-md " +
                 (m.from === "You"
-                  ? "bg-brand-accent text-white"
-                  : "bg-white border border-gray-200")
+                  ? "bg-brand-accent text-white" // Your messages
+                  : "bg-white border border-gray-200") // Others' messages
               }
             >
               <div className="text-sm">{m.text}</div>
@@ -47,6 +86,7 @@ export default function Chat({ thread }) {
             </div>
           </div>
         ))}
+        {/* Empty div to anchor scroll-to-bottom */}
         <div ref={messagesEndRef} />
       </div>
 

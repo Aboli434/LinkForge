@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getUsers } from '../data/mock'
+import { getUsers } from '../data/test'
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('')

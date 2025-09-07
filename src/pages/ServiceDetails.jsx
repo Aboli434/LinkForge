@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom"
-import { getServices } from "../data/mock"
+import { getServices } from "../data/test"
 
 export default function ServiceDetails() {
   const { id } = useParams()
