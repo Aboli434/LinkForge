@@ -2,34 +2,63 @@ import { Mail, Phone, Twitter } from "lucide-react";
 
 export default function Contact() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
-      <h1 className="text-2xl font-semibold mb-6">Contact Us</h1>
+    <div className="max-w-5xl mx-auto px-4 py-12">
+      <h1 className="text-3xl font-bold text-center mb-10">Contact Us</h1>
 
-      <div className="space-y-4 text-gray-700">
-        <p className="flex items-center gap-2">
-          <Mail className="w-5 h-5 text-blue-500" />
-          <span>Email: <strong>support@example.com</strong></span>
-        </p>
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* Contact Details */}
+        <div className="bg-gray-50 p-6 rounded-2xl shadow">
+          <h2 className="text-xl font-semibold mb-4">Contact Details</h2>
+          <ul className="space-y-3 text-gray-700 text-sm">
+            <li className="flex items-center gap-3">
+              <Mail className="w-4 h-4 text-blue-500" />
+              <span>Email: <strong>support@example.com</strong></span>
+            </li>
+            <li className="flex items-center gap-3">
+              <Phone className="w-4 h-4 text-green-500" />
+              <span>Mobile: <strong>+91-9876543210</strong></span>
+            </li>
+            <li className="flex items-center gap-3">
+              <Twitter className="w-4 h-4 text-sky-500" />
+              <span>
+                Twitter:{" "}
+                <a 
+                  href="https://twitter.com/example" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-sky-600 font-semibold hover:underline"
+                >
+                  @support
+                </a>
+              </span>
+            </li>
+          </ul>
+        </div>
 
-        <p className="flex items-center gap-2">
-          <Phone className="w-5 h-5 text-green-500" />
-          <span>Mobile: <strong>+91-9876543210</strong></span>
-        </p>
-
-        <p className="flex items-center gap-2">
-          <Twitter className="w-5 h-5 text-sky-500" />
-          <span>
-            Twitter:{" "}
-            <a 
-              href="https://twitter.com/example" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-sky-600 font-semibold hover:underline"
-            >
-              support@example
-            </a>
-          </span>
-        </p>
+        {/* Contact Form */}
+        <div className="bg-gray-50 p-6 rounded-2xl shadow">
+          <h2 className="text-xl font-semibold mb-4">Send Us a Message</h2>
+          <form className="space-y-4 text-sm">
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-400"
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-400"
+            />
+            <textarea
+              rows="3"
+              placeholder="Your Message"
+              className="w-full p-2 border rounded-lg focus:ring-2 focus:ring-blue-400"
+            ></textarea>
+            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+              Send
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
