@@ -1,4 +1,4 @@
-# Freelance Marketplace (Frontend only)
+# LinkForge (Frontend only)
 
 This repository contains a React + Vite + Tailwind frontend demo for a freelancer marketplace (clients can buy services from freelancers).
 
@@ -12,6 +12,7 @@ This repository contains a React + Vite + Tailwind frontend demo for a freelance
 - Post project form (UI-only)
 - Orders listing, Messaging UI, Admin panel placeholder, About/Contact/FAQ/Terms pages
 - Payment form (dummy — no real payment integration)
+
 
 ## Quick start
 ```bash
